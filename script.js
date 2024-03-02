@@ -1,11 +1,15 @@
 //--------------------------------------- 1 задание
-let li1 = document.querySelectorAll('#li1')
-let li2 = document.querySelectorAll('#li2')
-let li3 = document.querySelectorAll('#li3')
-let li4 = document.querySelectorAll('#li4')
+let li1 = document.querySelector('#li1')
+let li2 = document.querySelector('#li2')
+let li3 = document.querySelector('#li3')
+let li4 = document.querySelector('#li4')
+let listt = document.querySelector('#listt')
+
+listt.value=JSON.stringify(listt)
+console.log(listt)
 
 let list = [li1.value, li2.value, li3.value, li4.value]
-
+list=JSON.stringify(list)
 console.log(list)
 
 
@@ -16,14 +20,52 @@ console.log(list)
 
 
 let json='["user1","user2","user3","user4","user5"]'
-
-json= JSON.parse(json)
+json=JSON.parse(json)
+json.push("user6")
 console.log(json)
+
+//----------------------------------------------------------------3
+
+
+let job = `[
+	{
+		"name": "user1",
+		"age": 25,
+		"salary": 1000
+	},
+	{
+		"name": "user2",
+		"age": 26,
+		"salary": 2000
+	},
+	{
+		"name": "user3",
+		"age": 27,
+		"salary": 3000
+	}
+]`;
+
+job=JSON.parse(job)
+job.push({
+    "name": "user4",
+    "age": 400,
+    "salary": 211212
+})
+console.log(job)
+//---------------------------------------------------4
+let users = '["user1","user2","user3","user4","user5"]';
+
+users=JSON.parse(users)
+console.log(users)
 
 //----------------------------------------Задание 5.
 let name = document.querySelector('#name')
 let lastname = document.querySelector('#lastname')
 let patronymic = document.querySelector('#otchestvo')
+
+name=JSON.stringify(name.value)
+lastname=JSON.stringify(lastname.value)
+patronymic=JSON.stringify(patronymic.value)
 
 
 localStorage.setItem('name', [name]);
@@ -40,9 +82,11 @@ let btn = document.querySelector('#btn')
 
 btn.addEventListener('click',()=> {
     localStorage.setItem('inps', [inp1.value, inp2.value, inp3.value]);
-    if(inp1.value==0|| inp2.value==0||inp3.value==0){
-        let a = (localStorage.getItem('inps'));
-        inp1 = a
-
-    }
+   
 })
+if(inp1.value==0|| inp2.value==0||inp3.value==0){
+    let a = localStorage.getItem('inps');
+   
+    inp1.value=a[0]
+
+}
